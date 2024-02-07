@@ -4,8 +4,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function BasicExample() {
+  const location = useLocation();
   return (
     <Navbar expand="md" className="bg-dark" data-bs-theme="dark">
       <Container fluid>
@@ -17,21 +19,37 @@ function BasicExample() {
           <Col className="d-flex ">
             <Row>
               <Col sm={12} md={2} lg={2}>
-                <Navbar.Brand href="#home">
+                <Link to="/" className="navbar-brand ">
                   <Image
                     src="../assets/netflix_logo.png"
                     width="100"
                     height="30"
                   />
-                </Navbar.Brand>
+                </Link>
               </Col>
               <Col className="ms-md-2 ">
                 <Navbar.Collapse id="basic-navbar-nav" className="">
                   <Nav className="me-0">
-                    <Nav.Link href="#home" active>
+                    <Link
+                      to="/"
+                      className={
+                        location.pathname === "/"
+                          ? "nav-link active"
+                          : "nav-link "
+                      }
+                    >
                       Home
-                    </Nav.Link>
-                    <Nav.Link href="#link">TV Shows</Nav.Link>
+                    </Link>
+                    <Link
+                      to="/tvshows"
+                      className={
+                        location.pathname === "/tvshows"
+                          ? "nav-link active"
+                          : "nav-link "
+                      }
+                    >
+                      TV Shows
+                    </Link>
                     <Nav.Link href="#link">Movies</Nav.Link>
                     <Nav.Link href="#link">Recently Added</Nav.Link>
                     <Nav.Link href="#link">My List</Nav.Link>
@@ -48,7 +66,7 @@ function BasicExample() {
               <Nav className=" me-0">
                 <Row className="align-items-center">
                   <Col className="p-0 col-3">
-                    <Nav.Link href="#home" active>
+                    <Nav.Link href="#home">
                       <i className="bi bi-search"></i>
                     </Nav.Link>
                   </Col>

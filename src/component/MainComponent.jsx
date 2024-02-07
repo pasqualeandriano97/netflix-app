@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 
 function MainComponent() {
   return (
-    <Container fluid className="bg-dark text-white pt-5">
+    <Container fluid className="bg-dark text-white pt-5 h-100">
       <Row className="g-3">
         <Col>
           <h3 className="text-light text-start ">My Collections Film</h3>
@@ -16,7 +16,6 @@ function MainComponent() {
         <SingleCollectionFilm collectionName="Harry Potter" />
       </Row>
       <Row className="g-3 my-3 ">
-        {" "}
         <h5 className="text-white-50 text-start my-3 ">Star Wars</h5>
         <SingleCollectionFilm collectionName="Star Wars" />
       </Row>

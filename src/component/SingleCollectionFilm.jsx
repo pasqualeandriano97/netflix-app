@@ -3,6 +3,7 @@ import { Component } from "react";
 import Image from "react-bootstrap/Image";
 import SpinnerComponent from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
+import { Link } from "react-router-dom";
 
 class SingleCollectionFilm extends Component {
   state = {
@@ -14,7 +15,7 @@ class SingleCollectionFilm extends Component {
   collectionFilmLoad = () => {
     this.setState({ isLoad: true });
     fetch(
-      "http://www.omdbapi.co/?apikey=d85182ab&s=" + this.props.collectionName
+      "http://www.omdbapi.com/?apikey=d85182ab&s=" + this.props.collectionName
     )
       .then((response) => {
         if (response.ok) {
@@ -56,12 +57,14 @@ class SingleCollectionFilm extends Component {
         {this.state.collectionFilms.slice(0, 6).map((film) => (
           <Col key={film.imdbID} sm={2} md={4} lg={3}>
             {film.Poster && (
-              <Image
-                src={film.Poster}
-                width="100%"
-                height="100%"
-                className="scale"
-              />
+              <Link to={"/moviedetails/" + film.imdbID} key={film.imdbID}>
+                <Image
+                  src={film.Poster}
+                  width="100%"
+                  height="100%"
+                  className="scale"
+                />{" "}
+              </Link>
             )}
           </Col>
         ))}
